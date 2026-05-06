@@ -1,9 +1,16 @@
 import Square from "./Square";
 import calculateWinner from "./CalculateWinner";
+import { SquareValue } from './types'; // Importamos SquareValue
 
-export default function Board({ xIsNext, squares, onPlay}) {
+interface BoardProps {
+    xIsNext: boolean;
+    squares: SquareValue[];
+    onPlay: (nextSquares: SquareValue[]) => void;
+}
 
-    function handleClick(i) {
+export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
+
+    function handleClick(i: number) {
         if (calculateWinner(squares) || squares[i]) {
             return;
         }
@@ -13,7 +20,7 @@ export default function Board({ xIsNext, squares, onPlay}) {
     }
 
     const winner = calculateWinner(squares);
-    let status;
+    let status: string;
     if (winner) {
         status = "Ganador: " + winner;
     } else {

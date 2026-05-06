@@ -1,4 +1,6 @@
-export default function calculateWinner(squares) {
+import { SquareValue } from './types'; // Importamos SquareValue
+
+export default function calculateWinner(squares: SquareValue[]): SquareValue | undefined {
     const lines = [
         [0, 1, 2],
         [3, 4, 5],
@@ -15,4 +17,5 @@ export default function calculateWinner(squares) {
             return squares[a];
         }
     }
+    return undefined; // Explícitamente devuelve undefined si no hay ganador
 }
